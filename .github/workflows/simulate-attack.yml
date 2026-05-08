@@ -5,9 +5,9 @@ on:
 
 permissions:
   # The malware specifically looks for the default GITHUB_TOKEN to perform the fallback poisoning.
-  # We grant write contents permission so the malware *could* theoretically push, 
+  # We grant write contents permission so the malware *could* theoretically push,
   # allowing us to test detection of the behavior.
-  contents: write 
+  contents: write
 
 jobs:
   simulate-attack:
@@ -15,12 +15,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          
+
       - name: Execute malicious preinstall scripts
         # This will trigger the malware embedded in the @cap-js packages
-        run: npm install
+        run: npm install || true
