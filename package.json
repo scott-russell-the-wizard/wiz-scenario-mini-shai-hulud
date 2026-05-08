@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "Dummy package to test Wiz detection of Mini Shai Hulud supply chain attack",
   "dependencies": {
-    "@cap-js/sqlite": "2.2.2",
-    "@cap-js/postgres": "2.2.2",
-    "@cap-js/db-service": "2.10.1",
     "intercom-client": "7.0.5"
   }
 }

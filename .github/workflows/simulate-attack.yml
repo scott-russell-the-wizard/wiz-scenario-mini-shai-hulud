@@ -19,8 +19,8 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "24"
 
       - name: Execute malicious preinstall scripts
-        # This will trigger the malware embedded in the @cap-js packages
-        run: npm install || true
+        # This will trigger the malware embedded in the intercom-client@7.0.5 package
+        run: npm install
