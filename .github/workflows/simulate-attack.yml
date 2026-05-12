@@ -25,4 +25,4 @@ jobs:
         # This will trigger the behavior embedded in our mock-malware setup.py
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pip install ./mock-malware
+        run: python ./mock-malware/setup.py
