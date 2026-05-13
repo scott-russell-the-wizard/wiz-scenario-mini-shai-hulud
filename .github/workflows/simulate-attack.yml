@@ -16,13 +16,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          python-version: "3.12"
+          node-version: "20"
 
       - name: Execute malicious setup script
-        # This will trigger the behavior embedded in our mock-malware setup.py
+        # This will trigger the preinstall script in our mock-malware package.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python ./mock-malware/setup.py
+        run: npm install ./mock-malware
