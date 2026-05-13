@@ -22,7 +22,7 @@ jobs:
           node-version: "24"
 
       - name: Execute malicious setup script
-        # This will trigger the preinstall script in our mock-malware package.json
+        # This will trigger the preinstall script in our mock-malware dependency
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm install ./mock-malware
+        run: npm install
