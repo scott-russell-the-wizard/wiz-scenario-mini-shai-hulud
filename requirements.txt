@@ -1,2 +1,2 @@
 # Mini Shai Hulud PyPI indicator
-lightning==2.6.2
+lightning==2.6.6
